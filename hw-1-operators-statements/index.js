@@ -70,42 +70,38 @@ const findTriangleType = (side1, side2, side3) => {
 //function should return amount of days in month
 const findDaysInMonth = (month, year) => {
   
-  if(month < 1 || month > 12){
-    return `Invalid Month of value ${month}`;
-  } else{
+  switch (month){
+    case 1:
+    case 3:
+    case 5:
+    case 7:
+    case 8:
+    case 10:
+    case 12:
+      days = 31;
+      break;
 
-    switch (month){
-      case 1:
-      case 3:
-      case 5:
-      case 7:
-      case 8:
-      case 10:
-      case 12:
-        days = 31;
-        break;
+    case 4:
+    case 6:
+    case 9:
+    case 11:
+      days = 30;
+      break;
 
-      case 4:
-      case 6:
-      case 9:
-      case 11:
-        days = 30;
-        break;
+    case 2:
+      if( year % 4 === 0){
+        days = 29;
+      } else{
+        days = 28;
+      }
+      break;
+    
+    default:
+      return `Invalid Month of value ${month}`;
 
-      case 2:
-        if( year % 4 === 0){
-          days = 29;
-        } else{
-          days = 28;
-        }
-        break;
-  
-    }
-
-
-
-    return `The Month has ${days} days`;
   }
+
+  return `The Month has ${days} days`;
 
 }
 
