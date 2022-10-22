@@ -2,7 +2,7 @@ const { calculateResult, formatLogger, subtract, multiply, divide, getModulus, s
 
 describe('Operators tests', () => {
   describe('when operation', () => {
-    xit('should return if return of two numbers according to passed callback', () => {
+    it('should return if return of two numbers according to passed callback', () => {
       expect(calculateResult(7, 8, checkNumbers, sum)).toBe(15);
       expect(calculateResult(5, 13, checkNumbers, subtract)).toBe(-8);
       expect(calculateResult(78, 56, checkNumbers, multiply)).toBe(4368);
