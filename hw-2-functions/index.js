@@ -71,7 +71,7 @@ const getModulus = (a, b) => {
 const formatLogger = (messageType) => {
   return function(messageReaction){
     return  `${messageType}: ${messageReaction}`;
-    //or we can use concatination:
+    //Also we can use concatination:
     //return messageType.concat(': ', messageReaction);
     //or something like that
   }
