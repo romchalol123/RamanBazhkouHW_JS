@@ -4,7 +4,11 @@
  */
 // function returns string without spaces from the beginning and from the end, and in upper letter register
 const transformString = (str) => {
-  // write your code here
+  let newStr = str
+              .trim()
+              .toUpperCase();
+
+  return newStr;
 };
 
 /**
@@ -13,7 +17,26 @@ const transformString = (str) => {
  */
 // function should return max number from array
 const findMaxNumber = (array) => {
-  // write your code here
+  let newArr = array
+  .slice()
+  .sort((a, b) => {
+      if (a > b){
+        return 1;
+      }else if (a < b){
+        return -1;
+      }
+      else{
+        return 0;
+      }
+    })
+
+  const lastNewArrEl = newArr[newArr.length - 1];
+
+  if (isNaN(lastNewArrEl)){
+    return NaN;
+  } else{
+    return lastNewArrEl;
+  }
 };
 
 
@@ -23,7 +46,32 @@ const findMaxNumber = (array) => {
  */
 // function returns array of length of every word in string
 const getStringWordsLength = (str) => {
-  // write your code here
+
+  if(str == 0){
+    return [];
+  }else{
+    let numArr = [];
+
+    wordsArr = str
+                  .split(', ')
+                  .forEach((item, index) => {
+                    numArr[index] = item.length;
+                  });
+
+    /* or we can go another way:
+
+    wordsArr = str.split(', ');
+    
+    for (i = 0; i < wordsArr.length; i++){
+        numArr[i] = wordsArr[i].length;
+    }
+
+    */
+
+    return numArr;
+  }
+
+
 };
 
 /**
