@@ -17,25 +17,21 @@ const transformString = (str) => {
  */
 // function should return max number from array
 const findMaxNumber = (array) => {
-  let newArr = array
-  .slice()
-  .sort((a, b) => {
-      if (a > b){
-        return 1;
-      }else if (a < b){
-        return -1;
-      }
-      else{
-        return 0;
-      }
-    })
 
-  const lastNewArrEl = newArr[newArr.length - 1];
-
-  if (isNaN(lastNewArrEl)){
+  if (array === []){
     return NaN;
   } else{
-    return lastNewArrEl;
+
+    let newArr = array
+    .slice()
+    .sort((a, b) => {
+        if (a > b) return 1;
+        else if (a < b) return -1;
+        else return 0;
+      })
+
+    return newArr.at(-1);
+    //return newArr[newArr.length - 1];
   }
 };
 
@@ -47,16 +43,16 @@ const findMaxNumber = (array) => {
 // function returns array of length of every word in string
 const getStringWordsLength = (str) => {
 
-  if(str == 0){
-    return [];
+  if(str === []){
+    return str
   }else{
     let numArr = [];
 
     wordsArr = str
-                  .split(', ')
-                  .forEach((item, index) => {
-                    numArr[index] = item.length;
-                  });
+                .split(', ')
+                .forEach((item, index) => {
+                  numArr[index] = item.length;
+                });
 
     /* or we can go another way:
 
@@ -81,7 +77,19 @@ const getStringWordsLength = (str) => {
  */
 // function returns array of numbers as result of initial number and degree
 const getTransformedNumbers = (numArray, degree) => {
-  // write you code here
+  let newArr =[];
+
+  numArray.forEach((item, index) => {
+    newArr[index] = Math.pow(item, degree);
+  })
+
+  /* or another variant
+  for (i=0; i<numArray.length; i++){
+    newArr[i] = Math.pow(numArray[i], degree);
+  }
+  */
+
+  return newArr;
 };
 
 /**
@@ -90,7 +98,15 @@ const getTransformedNumbers = (numArray, degree) => {
  */
 // function returns text with all first letters at the beginning of sentence capitalized
 const getTransformedText = (text) => {
-  // write your code here
+  const newText = text
+              .split('. ')
+              .map(sentence => {
+                let newSentence = sentence[0].toUpperCase() + sentence.slice(1);
+                return newSentence;
+              })
+              .join('. ');
+
+  return newText;
 };
 
 /**
@@ -99,7 +115,8 @@ const getTransformedText = (text) => {
  */
 // function filters array and return only array of positive integers
 const getPositiveIntegers = (array) => {
-  // write your code here
+  const filteredArr = array.filter(item => typeof item === 'number' && item > 0 && item % 1 === 0);
+  return filteredArr;
 };
 
 /**
@@ -109,7 +126,7 @@ const getPositiveIntegers = (array) => {
  */
 // functions return index of element in array
 const getElementIndex = (array, value) => {
-  // write your code here
+  return array.indexOf(value);
 };
 
 /**
@@ -119,7 +136,11 @@ const getElementIndex = (array, value) => {
  */
 // function returns item from array or undefined if item is not found
 const getItem = (array, value) => {
-  // write your code here
+  if(array.includes(value)){
+    return value;
+  } else{
+    return undefined;
+  }
 };
 
 /**
@@ -129,7 +150,11 @@ const getItem = (array, value) => {
  */
 // function returns true if word is in every string in array and false if is not
 const isWordInEveryArrayString = (array, word) => {
-  // write your code here
+  if (array === []){
+    return false;
+  } else{
+    return array.every(sentence => sentence.includes(word));
+  }
 };
 
 /**
@@ -138,7 +163,7 @@ const isWordInEveryArrayString = (array, word) => {
  */
 // function returns true if any number in array is negative
 const isNegativeNumbersInArray = (array) => {
-  // write your code here
+  return array.some(item => typeof item === 'number' && item < 0);
 };
 
 /**
@@ -149,7 +174,12 @@ const isNegativeNumbersInArray = (array) => {
  */
 // function returns part of array from start to end (including end) positions
 const returnArrayPart = (array, startPosition, endPosition) => {
-  // write your code here
+  if(array === []){
+    return array;
+  } else{
+    let newArr = array.slice(startPosition, endPosition + 1);
+    return newArr;
+  }
 };
 
 
